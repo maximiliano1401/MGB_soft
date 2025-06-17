@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Paquetes | MGB Software S.A. de C.V.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+   
+    .logo-container img {
+      width: 110px;
+      margin-bottom: 8px;
+    }
+ 
+   
+    .paquetes-section {
+      max-width: 1100px;
+      margin: 38px auto 0 auto;
+      padding: 0 16px 40px 16px;
+    }
+    .paquetes-title {
+      text-align: center;
+      color: #004aad;
+      font-size: 2em;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .paquetes-desc {
+      text-align: center;
+      color: #333;
+      margin-bottom: 32px;
+      font-size: 1.13em;
+    }
+    .paquetes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .paquete-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px #004aad18;
+      border: 1.5px solid #e3eefd;
+      max-width: 330px;
+      min-width: 260px;
+      flex: 1 1 280px;
+      padding: 28px 22px 24px 22px;
+      text-align: center;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+      position: relative;
+    }
+    .paquete-card:hover {
+      box-shadow: 0 8px 32px #004aad33;
+      border-color: #1976d2;
+      transform: translateY(-4px) scale(1.03);
+    }
+    .paquete-icon {
+      font-size: 2.7em;
+      margin-bottom: 10px;
+      color: #1976d2;
+    }
+    .paquete-nombre {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #004aad;
+      margin-bottom: 8px;
+    }
+    .paquete-precio {
+      font-size: 1.25em;
+      color: #27ae60;
+      font-weight: 700;
+      margin: 10px 0 16px 0;
+    }
+    .paquete-lista {
+      text-align: left;
+      margin: 0 auto 18px auto;
+      padding: 0 0 0 18px;
+      color: #333;
+      font-size: 1em;
+    }
+    .paquete-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #004aad 80%, #2563eb 100%);
+      color: #fff;
+      border: none;
+      border-radius: 32px;
+      font-size: 1.08em;
+      font-weight: 700;
+      padding: 11px 32px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,74,173,0.13);
+      letter-spacing: 0.5px;
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+      margin-top: 10px;
+    }
+    .paquete-btn:hover {
+      background: linear-gradient(90deg, #003366 80%, #2563eb 100%);
+      color: #e3eefd;
+      box-shadow: 0 6px 18px rgba(0,74,173,0.18);
+    }
+    @media (max-width: 900px) {
+      .paquetes-grid { flex-direction: column; gap: 18px; }
+      .paquete-card { max-width: 98vw; }
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.98em;
+      margin: 40px 0 18px 0;
+    }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="IMG/logo.png" alt="Logo MGB">
+    </div>
+    <h1>MGB Software S.A. de C.V.</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="paquetes.html">Paquetes</a>
+      <a href="contacto.php">Contacto</a>
+      <a href="acerca_de.html">Acerca de</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="paquetes-section">
+      <div class="paquetes-title">Nuestros Paquetes de Software</div>
+      <div class="paquetes-desc">
+        Elige el paquete que mejor se adapte a las necesidades de tu empresa. Todos incluyen soporte, capacitación y actualizaciones.
+      </div>
+      <div class="paquetes-grid">
+        <!-- Paquete Contabilidad -->
+        <div class="paquete-card">
+          <div class="paquete-icon">💼</div>
+          <div class="paquete-nombre">Software de Contabilidad</div>
+          <div class="paquete-precio">$1,200 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Gestión de facturación y cuentas por cobrar/pagar</li>
+            <li>Reportes fiscales y estados financieros</li>
+            <li>Conciliación bancaria</li>
+            <li>Multiusuario y acceso seguro</li>
+            <li>Soporte y actualizaciones incluidas</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+        <!-- Paquete Inventarios -->
+        <div class="paquete-card">
+          <div class="paquete-icon">📦</div>
+          <div class="paquete-nombre">Software de Inventarios</div>
+          <div class="paquete-precio">$1,000 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Control de stock en tiempo real</li>
+            <li>Alertas de inventario bajo</li>
+            <li>Gestión de entradas y salidas</li>
+            <li>Reportes de movimientos y existencias</li>
+            <li>Integración con facturación</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+        <!-- Paquete Recursos Humanos -->
+        <div class="paquete-card">
+          <div class="paquete-icon">👥</div>
+          <div class="paquete-nombre">Software de Recursos Humanos</div>
+          <div class="paquete-precio">$1,100 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Gestión de nómina y recibos digitales</li>
+            <li>Control de asistencia y vacaciones</li>
+            <li>Expedientes digitales de empleados</li>
+            <li>Reportes de incidencias y desempeño</li>
+            <li>Soporte y capacitación</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+        <!-- Paquete Doble: Contabilidad + Inventarios -->
+        <div class="paquete-card" style="border:2px solid #27ae60;">
+          <div class="paquete-icon">💼 + 📦</div>
+          <div class="paquete-nombre">Contabilidad + Inventarios</div>
+          <div class="paquete-precio" style="color:#27ae60;">$2,000 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Incluye todas las funciones de ambos sistemas</li>
+            <li>Integración entre facturación y stock</li>
+            <li>Reportes combinados</li>
+            <li>Capacitación y soporte premium</li>
+            <li>Ahorra $200 MXN</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+        <!-- Paquete Doble: Inventarios + Recursos Humanos -->
+        <div class="paquete-card" style="border:2px solid #27ae60;">
+          <div class="paquete-icon">📦 + 👥</div>
+          <div class="paquete-nombre">Inventarios + Recursos Humanos</div>
+          <div class="paquete-precio" style="color:#27ae60;">$1,900 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Gestión integral de inventario y personal</li>
+            <li>Reportes de existencias y nómina</li>
+            <li>Alertas y control de incidencias</li>
+            <li>Soporte y capacitación</li>
+            <li>Ahorra $200 MXN</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+        <!-- Paquete Triple: Todos los sistemas -->
+        <div class="paquete-card" style="border:2.5px solid #1976d2;">
+          <div class="paquete-icon">💼 + 📦 + 👥</div>
+          <div class="paquete-nombre">Paquete Empresarial Completo</div>
+          <div class="paquete-precio" style="color:#1976d2;">$2,800 MXN / año</div>
+          <ul class="paquete-lista">
+            <li>Incluye Contabilidad, Inventarios y Recursos Humanos</li>
+            <li>Integración total entre módulos</li>
+            <li>Reportes globales y personalizados</li>
+            <li>Soporte preferente y actualizaciones</li>
+            <li>Ahorra $500 MXN</li>
+          </ul>
+          <a href="contacto.php" class="paquete-btn">Solicitar este paquete</a>
+        </div>
+      </div>
+   
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 MGB Software S.A. de C.V. - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acerca de | MGB Software</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f8fa;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(120deg, #005baa 60%, #00bcd4 100%);
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+        }
+        .logo-container img {
+            height: 70px;
+            border-radius: 12px;
+            background: #fff;
+            border: 2px solid #00bcd4;
+            margin-bottom: 0.7rem;
+        }
+        h1 {
+            margin: 0.5rem 0 0.2rem 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08rem;
+            padding: 0.4rem 1.1rem;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.07);
+            margin: 0 0.3rem;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: #00bcd4;
+        }
+        main {
+            max-width: 900px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1rem 2rem 1rem;
+        }
+        section {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+            margin-bottom: 2rem;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+        }
+        section h2 {
+            color: #005baa;
+            margin-top: 0;
+            margin-bottom: 0.7rem;
+        }
+        section ul {
+            margin: 0.7rem 0 0 1.2rem;
+        }
+        section li {
+            margin-bottom: 0.4rem;
+        }
+        .equipo-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .miembro {
+            background: #f6f8fa;
+            border-radius: 10px;
+            padding: 1rem;
+            flex: 1 1 220px;
+            min-width: 180px;
+            max-width: 260px;
+            text-align: center;
+            box-shadow: 0 1px 6px #005baa11;
+        }
+        .miembro img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 2px solid #00bcd4;
+        }
+        @media (max-width: 700px) {
+            main { padding: 0 0.2rem 1rem 0.2rem; }
+            section { padding: 1.2rem 0.5rem 1rem 0.5rem; }
+            .equipo-lista { flex-direction: column; gap: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="IMG/logo.png" alt="Logo MGB">
+        </div>
+        <h1>Acerca de MGB Software</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="paquetes.html">Paquetes</a>
+      <a href="contacto.php">Contacto</a>
+      <a href="acerca_de.html" class="active">Acerca de</a>
+    </nav>
+    </header>
+    <main>
+        <section>
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                <strong>MGB Software S.A. de C.V.</strong>Somos una empresa mexicana compuesta por un equipo de tres profesionales apasionados por la tecnología y la innovación. Nos especializamos en el desarrollo de soluciones de software a medida que permiten a las empresas gestionar y automatizar sus procesos clave, incluyendo inventarios, recursos humanos, contabilidad, etc.
+            </p>
+        </section>
+        <section>
+            <h2>Misión</h2>
+            <p>
+Facilitar la gestión empresarial mediante una plataforma unificada que integre ventas, clientes, soporte, recursos humanos y administración, brindando a empresas de todos los tamaños una herramienta poderosa para crecer, optimizar procesos y tomar decisiones con base en datos reales y centralizados.
+            </p>
+        </section>
+        <section>
+            <h2>Visión</h2>
+            <p>
+Ser el sistema integral líder en soluciones empresariales, reconocido por su innovación, facilidad de uso y capacidad para centralizar todas las operaciones de una empresa en una sola plataforma eficiente y accesible.
+            </p>
+        </section>
+        <section>
+            <h2>Valores</h2>
+            <ul>
+                <li>Innovación y mejora continua</li>
+                <li>Compromiso con el cliente</li>
+                <li>Transparencia y honestidad</li>
+                <li>Trabajo en equipo</li>
+                <li>Responsabilidad social</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Nuestro equipo</h2>
+            <div class="equipo-lista">
+                <div class="miembro">
+                    <img src="IMG/user1.png" alt="Equipo 1">
+                    <strong>Gustavo Enrique Inurreta Brito</strong><br>
+                   
+                </div>
+                <div class="miembro">
+                    <img src="IMG/user2.png" alt="Equipo 2">
+                    <strong>Maximiliano Dzul Pérez</strong><br>
+                  
+                </div>
+                <div class="miembro">
+                    <img src="IMG/user3.png" alt="Equipo 3">
+                    <strong>Carlos Alberto Pinzón</strong><br>
+                   
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Contacto</h2>
+            <p>
+                ¿Quieres saber más sobre nosotros o nuestros servicios?<br>
+                Escríbenos a <a href="mailto:contacto@mgbsoftware.com">contacto@mgbsoftware.com</a> o llama al <strong>+52 999 123 4567</strong>.
+            </p>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Contable</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center my-4">
+            <h1>Informe Contable</h1>
+            <p>Generado el: <span id="report-date"></span></p>
+        </header>
+        <section id="report-content">
+            <!-- Aquí se generará el contenido del informe -->
+        </section>
+        <footer class="text-center my-4">
+            <button id="export-pdf" class="btn btn-primary">Exportar a PDF</button>
+            <button id="export-excel" class="btn btn-secondary">Exportar a Excel</button>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('report-date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>

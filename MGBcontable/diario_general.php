@@ -198,6 +198,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['final_submit']) && is
         .balance-section {
             margin-bottom: 18px;
         }
+
+          .volver-btn {
+            display: inline-block;
+            margin: 32px auto 0 auto;
+            padding: 13px 38px;
+            background: linear-gradient(90deg, #004aad 80%, #2563eb 100%);
+            color: #fff;
+            border: none;
+            border-radius: 32px;
+            font-size: 1.18em;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(0,74,173,0.13);
+            letter-spacing: 0.7px;
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+        }
+
+        .volver-btn:hover {
+            background: linear-gradient(90deg, #003366 80%, #2563eb 100%);
+            color: #e3eefd;
+            box-shadow: 0 8px 28px rgba(0,74,173,0.18);
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
@@ -268,6 +293,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['final_submit']) && is
                     <button type="submit">Guardar Cuentas</button>
                 </div>
             </form>
+                        <a href="index.php" class="volver-btn">Volver al menú principal</a>
+
         </section>
     </main>
     <script>
@@ -318,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['final_submit']) && is
                     totalPatrimonio += saldo;
                 }
 
-                const eliminar = `<a href="?balance_id=<?= $balance_id ?>&eliminar=1&cuenta=${c.codigo}" onclick="return confirm('¿Eliminar esta cuenta?')" class="remove-btn">🗑️</a>`;
+                const eliminar = <a href="?balance_id=<?= $balance_id ?>&eliminar=1&cuenta=${c.codigo}" onclick="return confirm('¿Eliminar esta cuenta?')" class="remove-btn">🗑</a>;
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
  <td>${c.codigo}</td>

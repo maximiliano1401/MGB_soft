@@ -1,4 +1,5 @@
 <?php
+require_once '../auth.php';
 require_once '../conexion.php';
 
 $sql = "SELECT id, usuario FROM usuarios ORDER BY id DESC";
@@ -25,7 +26,7 @@ $result = $conn->query($sql);
 <body>
     <main>
         <h1>Usuarios Registrados</h1>
-        <a class="volver" href="../index.html">&larr; Volver</a>
+        <a class="volver" href="../dashboard.php">&larr; Volver al Dashboard</a>
         <table>
             <thead>
                 <tr>

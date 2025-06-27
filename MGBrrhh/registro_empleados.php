@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mensaje = "Todos los campos son obligatorios.";
     } else {
         $stmt = $conn->prepare("INSERT INTO empleados (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, lugar_nacimiento, imss, rfc, curp, departamento_id, puesto_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssssiii", $nombre, $apellido_paterno, $apellido_materno, $fecha_nacimiento, $sexo, $lugar_nacimiento, $imss, $rfc, $curp, $departamento_id, $puesto_id);
+        $stmt->bind_param("sssssssssii", $nombre, $apellido_paterno, $apellido_materno, $fecha_nacimiento, $sexo, $lugar_nacimiento, $imss, $rfc, $curp, $departamento_id, $puesto_id);
         if ($stmt->execute()) {
             $empleado_id = $conn->insert_id;
             

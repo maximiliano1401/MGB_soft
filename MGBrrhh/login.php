@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+// Si ya hay una sesión activa, redirigir al dashboard
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
 require_once 'conexion.php';
 
 $error = "";
@@ -168,7 +175,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class="register-link">
             ¿No tienes cuenta? <a href="registro_admin.php">Registrar usuario</a><br>
-            <small style="color: #666;">O usa el <a href="setup_admin.php" style="color: #005baa;">setup automático</a></small>
+            <small style="color: #666; margin-top: 0.5rem; display: block;">
+                Primera vez: <a href="setup_admin.php" style="color: #005baa;">Setup automático</a> | 
+                <a href="verificar_sistema.php" style="color: #005baa;">Verificar sistema</a>
+            </small>
         </div>
     </div>
 </body>

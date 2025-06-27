@@ -13,8 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($nombre === '') {
             $mensaje = "El nombre del departamento es obligatorio.";
         } else {
+            // Preparar el valor de empresa_id para bind_param
+            $empresa_param = ($empresa_id > 0) ? $empresa_id : null;
+            
             $stmt = $conn->prepare("INSERT INTO departamentos (nombre, empresa_id) VALUES (?, ?)");
-            $stmt->bind_param("si", $nombre, $empresa_id ?: null);
+            $stmt->bind_param("si", $nombre, $empresa_param);
             if ($stmt->execute()) {
                 $mensaje = "Departamento registrado correctamente.";
             } else {

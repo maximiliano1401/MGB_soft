@@ -2,9 +2,18 @@
 require_once '../conexion.php';
 
 $sql = "SELECT n.id, CONCAT(e.nombre, ' ', e.apellido_paterno, ' ', e.apellido_materno) as empleado,
-        n.sueldo_base, n.periodicidad_pago, n.fecha_inicio, n.activo
+        n.sueldo_base, n.periodicidad_pago, n.fecha_inicio, n.activo,
+        CASE 
+            WHEN ab.estado = 'activo' THEN 'Activo'
+            WHEN ab.estado = 'inactivo' THEN 'Inactivo'
+            ELSE 'Sin registro'
+        END as estado_laboral
         FROM nomina n
         JOIN empleados e ON n.empleado_id = e.id
+        LEFT JOIN (
+            SELECT empleado_id, estado, ROW_NUMBER() OVER (PARTITION BY empleado_id ORDER BY fecha_movimiento DESC) as rn
+            FROM altas_bajas
+        ) ab ON e.id = ab.empleado_id AND ab.rn = 1
         ORDER BY n.id DESC";
 $result = $conn->query($sql);
 ?>
@@ -53,8 +62,8 @@ $result = $conn->query($sql);
                             <td class="sueldo">$<?= number_format($row['sueldo_base'], 2) ?></td>
                             <td><?= ucfirst($row['periodicidad_pago']) ?></td>
                             <td><?= date('d/m/Y', strtotime($row['fecha_inicio'])) ?></td>
-                            <td class="<?= $row['activo'] ? 'estado-activo' : 'estado-inactivo' ?>">
-                                <?= $row['activo'] ? 'Activo' : 'Inactivo' ?>
+                            <td class="<?= $row['estado_laboral'] == 'Activo' ? 'estado-activo' : ($row['estado_laboral'] == 'Inactivo' ? 'estado-inactivo' : '') ?>">
+                                <?= $row['estado_laboral'] ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>

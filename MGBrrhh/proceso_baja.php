@@ -2,28 +2,39 @@
 require_once 'auth.php';
 require_once 'conexion.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) && isset($_GET['motivo'])) {
-    $empleado_id = intval($_GET['id']);
-    $motivo = trim($_GET['motivo']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $empleado_id = (int)($_POST['empleado_id'] ?? $_GET['id'] ?? 0);
+    $motivo = trim($_POST['motivo'] ?? $_GET['motivo'] ?? '');
     $fecha_baja = date('Y-m-d');
 
-    if (!$empleado_id || !$motivo) {
-        header("Location: Ver_Registrados/ver_Registro_Empleados.php?error=Datos incompletos para la baja");
-        exit();
-    }
+    // Verificar que el empleado existe
+    $check = $conn->prepare("SELECT id FROM empleados WHERE id = ?");
+    $check->bind_param("i", $empleado_id);
+    $check->execute();
+    $result_check = $check->get_result();
 
-    // Buscar registro activo y actualizarlo
-    $stmt = $conn->prepare("UPDATE altas_bajas SET fecha_baja = ?, causa_baja = ?, estado = 'inactivo' WHERE empleado_id = ? AND estado = 'activo'");
-    $stmt->bind_param("ssi", $fecha_baja, $motivo, $empleado_id);
-    
-    if ($stmt->execute() && $stmt->affected_rows > 0) {
-        header("Location: Ver_Registrados/ver_Registro_Empleados.php?success=Empleado dado de baja correctamente");
+    if ($result_check->num_rows > 0) {
+        // Insertar el registro de baja
+        $stmt = $conn->prepare("INSERT INTO altas_bajas (empleado_id, tipo, estado, fecha_movimiento, motivo) VALUES (?, 'baja', 'inactivo', ?, ?)");
+        $stmt->bind_param("iss", $empleado_id, $fecha_baja, $motivo);
+        if ($stmt->execute()) {
+            $_SESSION['mensaje'] = "Empleado dado de baja exitosamente";
+            $_SESSION['tipo_mensaje'] = "success";
+        } else {
+            $_SESSION['mensaje'] = "Error al dar de baja al empleado: " . $conn->error;
+            $_SESSION['tipo_mensaje'] = "error";
+        }
+        $stmt->close();
     } else {
-        header("Location: Ver_Registrados/ver_Registro_Empleados.php?error=Error al dar de baja o empleado ya inactivo");
+        $_SESSION['mensaje'] = "Empleado no encontrado";
+        $_SESSION['tipo_mensaje'] = "error";
     }
-    $stmt->close();
+    $check->close();
 } else {
-    header("Location: Ver_Registrados/ver_Registro_Empleados.php");
+    $_SESSION['mensaje'] = "Acceso no válido";
+    $_SESSION['tipo_mensaje'] = "error";
 }
+
+header("Location: Ver_Registrados/ver_Registro_Empleados.php");
 exit();
 ?>

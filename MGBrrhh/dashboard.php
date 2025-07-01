@@ -208,6 +208,7 @@ $stats['ausencias_mes'] = $result->fetch_assoc()['total'];
             <a href="registro_empleados.php">Registrar Empleados</a>
             <a href="registro_nomina.php">Gestionar Nómina</a>
             <a href="Ver_Registrados/ver_Registro_Empleados.php">Ver Empleados</a>
+            <a href="registrar_asistencias.php" class="btn btn-success" style="font-size:1.1rem;">📝 Registrar Asistencias</a>
         </div>
     </nav>
 

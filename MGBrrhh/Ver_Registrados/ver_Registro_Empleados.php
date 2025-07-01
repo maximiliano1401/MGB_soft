@@ -2,6 +2,7 @@
 require_once '../auth.php';
 require_once '../conexion.php';
 
+// Consulta corregida para mostrar el estado real de los empleados
 $sql = "SELECT e.id, e.nombre, e.apellido_paterno, e.apellido_materno, e.fecha_nacimiento, 
         e.sexo, e.lugar_nacimiento, e.imss, e.rfc, e.curp, 
         d.nombre AS departamento, p.nombre AS puesto,
@@ -9,11 +10,17 @@ $sql = "SELECT e.id, e.nombre, e.apellido_paterno, e.apellido_materno, e.fecha_n
             WHEN ab.estado = 'activo' THEN 'Activo'
             WHEN ab.estado = 'inactivo' THEN 'Inactivo'
             ELSE 'Sin registro'
-        END as estado_laboral
+        END as estado_laboral,
+        ab.fecha_movimiento,
+        ab.motivo
         FROM empleados e
         LEFT JOIN departamentos d ON e.departamento_id = d.id
         LEFT JOIN puestos p ON e.puesto_id = p.id
-        LEFT JOIN altas_bajas ab ON e.id = ab.empleado_id AND ab.estado = 'activo'
+        LEFT JOIN (
+            SELECT empleado_id, estado, fecha_movimiento, motivo,
+                   ROW_NUMBER() OVER (PARTITION BY empleado_id ORDER BY fecha_movimiento DESC) as rn
+            FROM altas_bajas
+        ) ab ON e.id = ab.empleado_id AND ab.rn = 1
         ORDER BY e.id DESC";
 $result = $conn->query($sql);
 ?>
@@ -168,6 +175,12 @@ $result = $conn->query($sql);
                                     
                                     <?php if ($row['estado_laboral'] == 'Activo'): ?>
                                         <a href="javascript:void(0)" onclick="darDeBaja(<?= $row['id'] ?>)" class="btn-sm btn-baja" title="Dar de baja">❌</a>
+                                    <?php elseif ($row['estado_laboral'] == 'Inactivo'): ?>
+                                        <form method="post" action="../proceso_reactivar.php" style="display:inline;">
+                                            <input type="hidden" name="empleado_id" value="<?= $row['id'] ?>">
+                                            <input type="hidden" name="motivo" value="Reactivación">
+                                            <button type="submit" class="btn-sm btn-success" title="Reactivar" onclick="return confirm('¿Seguro que deseas reactivar a este empleado?')">🔄 Reactivar</button>
+                                        </form>
                                     <?php endif; ?>
                                     
                                     <a href="javascript:void(0)" onclick="registrarVacaciones(<?= $row['id'] ?>)" class="btn-sm btn-vacaciones" title="Vacaciones">🏖️</a>

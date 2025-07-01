@@ -23,14 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ) {
         $mensaje = "Todos los campos son obligatorios.";
     } else {
+        // Insertar empleado
         $stmt = $conn->prepare("INSERT INTO empleados (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, sexo, lugar_nacimiento, imss, rfc, curp, departamento_id, puesto_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssssssii", $nombre, $apellido_paterno, $apellido_materno, $fecha_nacimiento, $sexo, $lugar_nacimiento, $imss, $rfc, $curp, $departamento_id, $puesto_id);
+        
         if ($stmt->execute()) {
             $empleado_id = $conn->insert_id;
             
-            // Registrar automáticamente el alta del empleado
+            // Registrar automáticamente como activo (alta)
             $fecha_alta = date('Y-m-d');
-            $stmt_alta = $conn->prepare("INSERT INTO altas_bajas (empleado_id, fecha_alta, estado) VALUES (?, ?, 'activo')");
+            $stmt_alta = $conn->prepare("INSERT INTO altas_bajas (empleado_id, tipo, estado, fecha_movimiento, motivo) VALUES (?, 'alta', 'activo', ?, 'Registro inicial del empleado')");
             $stmt_alta->bind_param("is", $empleado_id, $fecha_alta);
             $stmt_alta->execute();
             $stmt_alta->close();

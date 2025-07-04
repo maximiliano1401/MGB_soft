@@ -19,13 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $telefono = sanitize_input($_POST['telefono']);
                 $email = sanitize_input($_POST['email']);
                 $ruc = sanitize_input($_POST['ruc']);
+                $moneda_simbolo = sanitize_input($_POST['moneda_simbolo']);
+                $moneda_codigo = sanitize_input($_POST['moneda_codigo']);
+                $moneda_nombre = sanitize_input($_POST['moneda_nombre']);
                 
                 if (empty($nombre)) {
                     showAlert('El nombre de la empresa es requerido', 'danger');
                 } else {
                     try {
-                        $stmt = $conn->prepare("INSERT INTO empresas (nombre, direccion, telefono, email, ruc) VALUES (?, ?, ?, ?, ?)");
-                        $stmt->execute([$nombre, $direccion, $telefono, $email, $ruc]);
+                        $stmt = $conn->prepare("INSERT INTO empresas (nombre, direccion, telefono, email, ruc, moneda_simbolo, moneda_codigo, moneda_nombre) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                        $stmt->execute([$nombre, $direccion, $telefono, $email, $ruc, $moneda_simbolo, $moneda_codigo, $moneda_nombre]);
                         
                         showAlert('Empresa agregada exitosamente', 'success');
                         
@@ -48,8 +51,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
                 break;
+                
+            case 'edit':
+                $id = (int)$_POST['id'];
+                $nombre = sanitize_input($_POST['nombre']);
+                $direccion = sanitize_input($_POST['direccion']);
+                $telefono = sanitize_input($_POST['telefono']);
+                $email = sanitize_input($_POST['email']);
+                $ruc = sanitize_input($_POST['ruc']);
+                $moneda_simbolo = sanitize_input($_POST['moneda_simbolo']);
+                $moneda_codigo = sanitize_input($_POST['moneda_codigo']);
+                $moneda_nombre = sanitize_input($_POST['moneda_nombre']);
+                
+                if (empty($nombre)) {
+                    showAlert('El nombre de la empresa es requerido', 'danger');
+                } else {
+                    try {
+                        $stmt = $conn->prepare("UPDATE empresas SET nombre = ?, direccion = ?, telefono = ?, email = ?, ruc = ?, moneda_simbolo = ?, moneda_codigo = ?, moneda_nombre = ? WHERE id = ?");
+                        $stmt->execute([$nombre, $direccion, $telefono, $email, $ruc, $moneda_simbolo, $moneda_codigo, $moneda_nombre, $id]);
+                        
+                        showAlert('Empresa actualizada exitosamente', 'success');
+                        
+                        // Si es petición AJAX, devolver JSON
+                        if (isset($_POST['ajax'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(['success' => true, 'message' => 'Empresa actualizada exitosamente']);
+                            exit;
+                        }
+                        
+                    } catch (Exception $e) {
+                        $message = 'Error al actualizar empresa: ' . $e->getMessage();
+                        showAlert($message, 'danger');
+                        
+                        if (isset($_POST['ajax'])) {
+                            header('Content-Type: application/json');
+                            echo json_encode(['success' => false, 'message' => $message]);
+                            exit;
+                        }
+                    }
+                }
+                break;
         }
     }
+}
+
+// API para obtener datos de empresa para edición
+if (isset($_GET['api']) && $_GET['api'] == 'get' && isset($_GET['id'])) {
+    header('Content-Type: application/json');
+    $id = (int)$_GET['id'];
+    
+    try {
+        $stmt = $conn->prepare("SELECT * FROM empresas WHERE id = ? AND activo = 1");
+        $stmt->execute([$id]);
+        $empresa = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($empresa) {
+            echo json_encode(['success' => true, 'empresa' => $empresa]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Empresa no encontrada']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => 'Error al obtener empresa: ' . $e->getMessage()]);
+    }
+    exit;
 }
 
 // Procesar GET actions
@@ -164,15 +228,21 @@ $alert = getAlert();
                                     <?php if ($empresa['ruc']): ?>
                                         <p><strong>RUC:</strong> <?php echo htmlspecialchars($empresa['ruc']); ?></p>
                                     <?php endif; ?>
+                                    <p><strong>Moneda:</strong> <?php echo htmlspecialchars($empresa['moneda_simbolo'] ?? 'S/'); ?> (<?php echo htmlspecialchars($empresa['moneda_nombre'] ?? 'Sol Peruano'); ?>)</p>
                                     <p><strong>Registrada:</strong> <?php echo formatDate($empresa['fecha_registro']); ?></p>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); CompanyManager.select(<?php echo $empresa['id']; ?>)">
                                         Seleccionar
                                     </button>
-                                    <button class="btn btn-danger btn-sm btn-delete" onclick="event.stopPropagation(); window.location.href='companies.php?delete=<?php echo $empresa['id']; ?>'">
-                                        Eliminar
-                                    </button>
+                                    <div class="d-flex gap-1">
+                                        <button class="btn btn-warning btn-sm" onclick="event.stopPropagation(); CompanyManager.showEditForm(<?php echo $empresa['id']; ?>)">
+                                            Editar
+                                        </button>
+                                        <button class="btn btn-danger btn-sm btn-delete" onclick="event.stopPropagation(); window.location.href='companies.php?delete=<?php echo $empresa['id']; ?>'">
+                                            Eliminar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -221,12 +291,105 @@ $alert = getAlert();
                         <input type="email" id="email" name="email" class="form-control">
                     </div>
                     
+                    <div class="form-group">
+                        <label for="moneda" class="form-label">Moneda *</label>
+                        <select id="moneda" name="moneda" class="form-control" required onchange="CompanyManager.updateCurrencyFields()">
+                            <option value="">Seleccionar moneda</option>
+                            <option value="MXN|$|Peso Mexicano" selected>Peso Mexicano ($)</option>
+                            <option value="PEN|S/|Sol Peruano">Sol Peruano (S/)</option>
+                            <option value="USD|$|Dólar Estadounidense">Dólar Estadounidense ($)</option>
+                            <option value="EUR|€|Euro">Euro (€)</option>
+                            <option value="COP|$|Peso Colombiano">Peso Colombiano ($)</option>
+                            <option value="ARS|$|Peso Argentino">Peso Argentino ($)</option>
+                            <option value="CLP|$|Peso Chileno">Peso Chileno ($)</option>
+                            <option value="BOB|Bs|Boliviano">Boliviano (Bs)</option>
+                            <option value="VES|Bs|Bolívar Venezolano">Bolívar Venezolano (Bs)</option>
+                        </select>
+                    </div>
+                    
+                    <input type="hidden" id="moneda_simbolo" name="moneda_simbolo" value="$">
+                    <input type="hidden" id="moneda_codigo" name="moneda_codigo" value="MXN">
+                    <input type="hidden" id="moneda_nombre" name="moneda_nombre" value="Peso Mexicano">
+                    
                     <div class="d-flex justify-content-between gap-2">
                         <button type="button" class="btn" style="background: #95a5a6;" onclick="MGBStock.hideModal('addCompanyModal')">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">
                             Agregar Empresa
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar empresa -->
+    <div id="editCompanyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Editar Empresa</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editCompanyForm" onsubmit="event.preventDefault(); CompanyManager.edit();">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="ajax" value="1">
+                    <input type="hidden" id="edit_id" name="id">
+                    
+                    <div class="form-group">
+                        <label for="edit_nombre" class="form-label">Nombre de la Empresa *</label>
+                        <input type="text" id="edit_nombre" name="nombre" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_direccion" class="form-label">Dirección</label>
+                        <textarea id="edit_direccion" name="direccion" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit_telefono" class="form-label">Teléfono</label>
+                            <input type="text" id="edit_telefono" name="telefono" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit_ruc" class="form-label">RUC</label>
+                            <input type="text" id="edit_ruc" name="ruc" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_email" class="form-label">Email</label>
+                        <input type="email" id="edit_email" name="email" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit_moneda" class="form-label">Moneda *</label>
+                        <select id="edit_moneda" name="moneda" class="form-control" required onchange="CompanyManager.updateEditCurrencyFields()">
+                            <option value="">Seleccionar moneda</option>
+                            <option value="MXN|$|Peso Mexicano">Peso Mexicano ($)</option>
+                            <option value="PEN|S/|Sol Peruano">Sol Peruano (S/)</option>
+                            <option value="USD|$|Dólar Estadounidense">Dólar Estadounidense ($)</option>
+                            <option value="EUR|€|Euro">Euro (€)</option>
+                            <option value="COP|$|Peso Colombiano">Peso Colombiano ($)</option>
+                            <option value="ARS|$|Peso Argentino">Peso Argentino ($)</option>
+                            <option value="CLP|$|Peso Chileno">Peso Chileno ($)</option>
+                            <option value="BOB|Bs|Boliviano">Boliviano (Bs)</option>
+                            <option value="VES|Bs|Bolívar Venezolano">Bolívar Venezolano (Bs)</option>
+                        </select>
+                    </div>
+                    
+                    <input type="hidden" id="edit_moneda_simbolo" name="moneda_simbolo">
+                    <input type="hidden" id="edit_moneda_codigo" name="moneda_codigo">
+                    <input type="hidden" id="edit_moneda_nombre" name="moneda_nombre">
+                    
+                    <div class="d-flex justify-content-between gap-2">
+                        <button type="button" class="btn" style="background: #95a5a6;" onclick="MGBStock.hideModal('editCompanyModal')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Actualizar Empresa
                         </button>
                     </div>
                 </form>

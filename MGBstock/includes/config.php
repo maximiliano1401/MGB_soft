@@ -118,10 +118,68 @@ function getAlert() {
 }
 
 /**
- * Formatear precio
+ * Formatear precio con la moneda de la empresa seleccionada
  */
-function formatPrice($price) {
-    return 'S/ ' . number_format($price, 2);
+function formatPrice($price, $currencySymbol = null) {
+    if ($currencySymbol === null && hasSelectedCompany()) {
+        $currencySymbol = getSelectedCompanyCurrency();
+    }
+    if ($currencySymbol === null) {
+        $currencySymbol = '$'; // Valor por defecto: Peso Mexicano
+    }
+    return $currencySymbol . ' ' . number_format($price, 2);
+}
+
+/**
+ * Obtener símbolo de moneda de la empresa seleccionada
+ */
+function getSelectedCompanyCurrency() {
+    if (!hasSelectedCompany()) {
+        return '$'; // Peso Mexicano por defecto
+    }
+    
+    $db = new Database();
+    $conn = $db->getConnection();
+    
+    try {
+        $stmt = $conn->prepare("SELECT moneda_simbolo FROM empresas WHERE id = ?");
+        $stmt->execute([$_SESSION['selected_company_id']]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        return $result ? $result['moneda_simbolo'] : '$';
+    } catch (Exception $e) {
+        return '$';
+    }
+}
+
+/**
+ * Obtener información completa de moneda de la empresa seleccionada
+ */
+function getSelectedCompanyCurrencyInfo() {
+    if (!hasSelectedCompany()) {
+        return ['simbolo' => '$', 'codigo' => 'MXN', 'nombre' => 'Peso Mexicano'];
+    }
+    
+    $db = new Database();
+    $conn = $db->getConnection();
+    
+    try {
+        $stmt = $conn->prepare("SELECT moneda_simbolo, moneda_codigo, moneda_nombre FROM empresas WHERE id = ?");
+        $stmt->execute([$_SESSION['selected_company_id']]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($result) {
+            return [
+                'simbolo' => $result['moneda_simbolo'],
+                'codigo' => $result['moneda_codigo'],
+                'nombre' => $result['moneda_nombre']
+            ];
+        }
+    } catch (Exception $e) {
+        // Error en la consulta
+    }
+    
+    return ['simbolo' => '$', 'codigo' => 'MXN', 'nombre' => 'Peso Mexicano'];
 }
 
 /**

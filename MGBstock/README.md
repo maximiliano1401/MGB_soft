@@ -1,6 +1,6 @@
-# MGBStock - Sistema de Inventario
+# MGBStock - Sistema de Inventario Multiempresa
 
-Un sistema completo de gestión de inventario desarrollado con HTML, CSS, JavaScript, PHP, MySQL y Python (Pyodide) para estadísticas avanzadas.
+Un sistema completo de gestión de inventario con soporte para múltiples empresas y **monedas configurables por empresa**. Desarrollado con HTML, CSS, JavaScript, PHP, MySQL y Python (Pyodide) para estadísticas avanzadas.
 
 ## 🚀 Características Principales
 
@@ -11,22 +11,36 @@ Un sistema completo de gestión de inventario desarrollado con HTML, CSS, JavaSc
 
 ### 🏢 Gestión Multi-Empresa
 - Registro y administración de múltiples empresas
+- **Configuración de moneda por empresa** (Símbolo, código ISO, nombre)
 - Selección de empresa para trabajar
 - Datos aislados por empresa
 
-### 📦 Gestión de Inventario
+### � Sistema de Monedas Configurables
+- **Sol Peruano (S/ - PEN)** - Por defecto
+- **Peso Mexicano ($ - MXN)**
+- **Dólar Estadounidense ($ - USD)**
+- **Euro (€ - EUR)**
+- **Peso Colombiano ($ - COP)**
+- **Peso Argentino ($ - ARS)**
+- **Peso Chileno ($ - CLP)**
+- **Boliviano (Bs - BOB)**
+- **Bolívar Venezolano (Bs - VES)**
+- **Fácil extensión para nuevas monedas**
+
+### �📦 Gestión de Inventario
 - **Categorías**: Organización de productos por categorías
 - **Productos**: Control completo de productos con códigos únicos
 - **Stock**: Control automático de stock con alertas de stock bajo
-- **Precios**: Gestión de precios de compra y venta
+- **Precios**: Gestión de precios en la moneda de cada empresa
 
 ### 🛒 Operaciones Comerciales
-- **Ventas**: Registro de ventas con validación de stock
+- **Ventas**: Registro de ventas con validación de stock y precios en moneda local
 - **Compras**: Registro de compras con actualización automática de stock
 - **Movimientos**: Historial completo de movimientos de stock
 
 ### 📊 Estadísticas Avanzadas
 - Gráficos generados con Python y Pyodide
+- **Todos los gráficos usan la moneda de la empresa seleccionada**
 - Análisis de ventas por período
 - Productos más vendidos
 - Comparativa ventas vs compras
@@ -55,26 +69,28 @@ Un sistema completo de gestión de inventario desarrollado con HTML, CSS, JavaSc
 
 ## 🚀 Instalación
 
-### 1. Configurar XAMPP
+### 🆕 Instalación Nueva
+
+#### 1. Configurar XAMPP
 ```bash
 # Descargar e instalar XAMPP
 # Iniciar Apache y MySQL desde el panel de XAMPP
 ```
 
-### 2. Clonar/Copiar el Proyecto
+#### 2. Clonar/Copiar el Proyecto
 ```bash
 # Copiar el proyecto en la carpeta htdocs de XAMPP
 C:\xampp\htdocs\MGB_soft\MGBstock\
 ```
 
-### 3. Configurar la Base de Datos
+#### 3. Configurar la Base de Datos
 
-#### Opción A: Usando phpMyAdmin
+##### Opción A: Usando phpMyAdmin
 1. Abrir http://localhost/phpmyadmin
 2. Crear nueva base de datos llamada `mgbstock`
 3. Importar el archivo `database/mgbstock.sql`
 
-#### Opción B: Usando línea de comandos
+##### Opción B: Usando línea de comandos
 ```bash
 # Conectar a MySQL
 mysql -u root -p
@@ -84,6 +100,27 @@ CREATE DATABASE mgbstock;
 
 # Importar estructura
 mysql -u root -p mgbstock < database/mgbstock.sql
+```
+
+### 🔄 Migración de Sistema Existente
+
+Si ya tiene MGBStock instalado y quiere agregar soporte de monedas:
+
+#### 1. Respaldar Base de Datos (Recomendado)
+```sql
+mysqldump -u root -p mgbstock > backup_mgbstock.sql
+```
+
+#### 2. Ejecutar Script de Migración
+```sql
+mysql -u root -p mgbstock < database/migration_currency.sql
+```
+
+#### 3. Verificar Migración
+```sql
+-- En phpMyAdmin o línea de comandos
+DESCRIBE empresas;
+-- Debe mostrar las nuevas columnas: moneda_simbolo, moneda_codigo, moneda_nombre
 ```
 
 ### 4. Configurar Conexión
@@ -131,6 +168,31 @@ MGBstock/
 ```
 
 ## 🎯 Guía de Uso
+
+### 💰 Configuración de Monedas por Empresa
+
+#### Crear Nueva Empresa con Moneda
+1. Ir a **"Empresas"** → **"Agregar Empresa"**
+2. Completar datos básicos (nombre, dirección, teléfono, etc.)
+3. **Seleccionar Moneda** del dropdown:
+   - Sol Peruano (S/)
+   - Peso Mexicano ($)
+   - Dólar Estadounidense ($)
+   - Euro (€)
+   - Y otras monedas disponibles
+4. Guardar empresa
+
+#### Editar Moneda de Empresa Existente
+1. En la lista de empresas, hacer clic en **"Editar"**
+2. Modificar la moneda seleccionada
+3. Los cambios se aplican inmediatamente a todos los precios y reportes
+
+#### Funcionamiento Automático
+- Una vez configurada la moneda, **toda la empresa** usa ese símbolo:
+  - Precios de productos (venta/compra)
+  - Totales de ventas y compras
+  - Estadísticas y gráficos
+  - Reportes de ingresos
 
 ### 1. Primer Acceso
 1. Acceder con las credenciales por defecto

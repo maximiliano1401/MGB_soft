@@ -23,7 +23,8 @@ if (isset($_GET['api']) && $_GET['api'] == 'data') {
         'compras_por_mes' => [],
         'productos_mas_vendidos' => [],
         'ventas_por_categoria' => [],
-        'resumen' => []
+        'resumen' => [],
+        'moneda' => getSelectedCompanyCurrencyInfo()
     ];
     
     try {
@@ -296,6 +297,10 @@ def fig_to_base64(fig):
     return graphic.decode('utf-8')
 
 # Crear gráficos
+# Obtener información de moneda
+currency_symbol = chart_data.get('moneda', {}).get('simbolo', 'S/')
+currency_name = chart_data.get('moneda', {}).get('nombre', 'Sol Peruano')
+
 charts_html = []
 
 # 1. Gráfico de Ventas por Mes
@@ -307,14 +312,14 @@ if chart_data.get('ventas_por_mes') and len(chart_data['ventas_por_mes']) > 0:
     bars = ax.bar(meses, totales, color='#3498db', alpha=0.8)
     ax.set_title('Ventas por Mes', fontsize=16, fontweight='bold')
     ax.set_xlabel('Mes')
-    ax.set_ylabel('Total de Ventas (S/)')
+    ax.set_ylabel(f'Total de Ventas ({currency_symbol})')
     ax.tick_params(axis='x', rotation=45)
     
     # Agregar valores en las barras
     for bar, total in zip(bars, totales):
         height = bar.get_height()
         ax.text(bar.get_x() + bar.get_width()/2., height,
-                f'S/ {total:,.2f}',
+                f'{currency_symbol} {total:,.2f}',
                 ha='center', va='bottom', fontsize=9)
     
     plt.tight_layout()
@@ -406,7 +411,7 @@ if (chart_data.get('ventas_por_mes') and len(chart_data['ventas_por_mes']) > 0 a
     
     ax.set_title('Comparación: Ventas vs Compras por Mes', fontsize=16, fontweight='bold')
     ax.set_xlabel('Mes')
-    ax.set_ylabel('Monto (S/)')
+    ax.set_ylabel(f'Monto ({currency_symbol})')
     ax.set_xticks(x)
     ax.set_xticklabels(todos_meses, rotation=45)
     ax.legend()
@@ -473,6 +478,7 @@ else:
                 }
                 
                 const resumen = this.data.resumen;
+                const currencySymbol = this.data.moneda ? this.data.moneda.simbolo : 'S/';
                 return `
                 <div class="dashboard-grid">
                     <div class="stat-card" style="background: linear-gradient(135deg, #3498db, #74b9ff);">
@@ -488,7 +494,7 @@ else:
                         <div class="stat-label">Total Compras</div>
                     </div>
                     <div class="stat-card" style="background: linear-gradient(135deg, #f39c12, #fdcb6e);">
-                        <div class="stat-number">S/ ${parseFloat(resumen.ingresos_totales || 0).toFixed(2)}</div>
+                        <div class="stat-number">${currencySymbol} ${parseFloat(resumen.ingresos_totales || 0).toFixed(2)}</div>
                         <div class="stat-label">Ingresos Totales</div>
                     </div>
                 </div>

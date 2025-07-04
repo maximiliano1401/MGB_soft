@@ -187,6 +187,62 @@ const CompanyManager = {
         MGBStock.showModal('addCompanyModal');
     },
 
+    showEditForm: async function(companyId) {
+        try {
+            const response = await fetch(`companies.php?api=get&id=${companyId}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                const empresa = data.empresa;
+                
+                // Llenar el formulario con los datos
+                document.getElementById('edit_id').value = empresa.id;
+                document.getElementById('edit_nombre').value = empresa.nombre || '';
+                document.getElementById('edit_direccion').value = empresa.direccion || '';
+                document.getElementById('edit_telefono').value = empresa.telefono || '';
+                document.getElementById('edit_ruc').value = empresa.ruc || '';
+                document.getElementById('edit_email').value = empresa.email || '';
+                
+                // Configurar moneda
+                const monedaValue = `${empresa.moneda_codigo || 'PEN'}|${empresa.moneda_simbolo || 'S/'}|${empresa.moneda_nombre || 'Sol Peruano'}`;
+                document.getElementById('edit_moneda').value = monedaValue;
+                document.getElementById('edit_moneda_simbolo').value = empresa.moneda_simbolo || 'S/';
+                document.getElementById('edit_moneda_codigo').value = empresa.moneda_codigo || 'PEN';
+                document.getElementById('edit_moneda_nombre').value = empresa.moneda_nombre || 'Sol Peruano';
+                
+                MGBStock.showModal('editCompanyModal');
+            } else {
+                MGBStock.showNotification(data.message, 'danger');
+            }
+        } catch (error) {
+            MGBStock.showNotification('Error al cargar datos de la empresa', 'danger');
+        }
+    },
+
+    updateCurrencyFields: function() {
+        const select = document.getElementById('moneda');
+        const selectedValue = select.value;
+        
+        if (selectedValue) {
+            const [codigo, simbolo, nombre] = selectedValue.split('|');
+            document.getElementById('moneda_codigo').value = codigo;
+            document.getElementById('moneda_simbolo').value = simbolo;
+            document.getElementById('moneda_nombre').value = nombre;
+        }
+    },
+
+    updateEditCurrencyFields: function() {
+        const select = document.getElementById('edit_moneda');
+        const selectedValue = select.value;
+        
+        if (selectedValue) {
+            const [codigo, simbolo, nombre] = selectedValue.split('|');
+            document.getElementById('edit_moneda_codigo').value = codigo;
+            document.getElementById('edit_moneda_simbolo').value = simbolo;
+            document.getElementById('edit_moneda_nombre').value = nombre;
+        }
+    },
+
     add: function() {
         if (!MGBStock.validateForm('addCompanyForm')) {
             MGBStock.showNotification('Por favor complete todos los campos requeridos', 'danger');
@@ -216,6 +272,41 @@ const CompanyManager = {
         })
         .catch(error => {
             MGBStock.showNotification('Error al agregar empresa', 'danger');
+        })
+        .finally(() => {
+            MGBStock.hideLoading(button);
+        });
+    },
+
+    edit: function() {
+        if (!MGBStock.validateForm('editCompanyForm')) {
+            MGBStock.showNotification('Por favor complete todos los campos requeridos', 'danger');
+            return;
+        }
+
+        const form = document.getElementById('editCompanyForm');
+        const formData = new FormData(form);
+        const button = form.querySelector('button[type="submit"]');
+
+        MGBStock.showLoading(button);
+
+        fetch('companies.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                MGBStock.showNotification('Empresa actualizada exitosamente', 'success');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            } else {
+                MGBStock.showNotification(data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            MGBStock.showNotification('Error al actualizar empresa', 'danger');
         })
         .finally(() => {
             MGBStock.hideLoading(button);

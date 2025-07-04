@@ -26,6 +26,7 @@ try {
         // Establecer la empresa en la sesión
         $_SESSION['empresa_id'] = $empresa['id'];
         $_SESSION['empresa_nombre'] = $empresa['nombre'];
+        $_SESSION['selected_company_id'] = $empresa['id']; // Para compatibilidad con las funciones de moneda
         
         showAlert('Ahora está trabajando con: ' . $empresa['nombre'], 'success');
         redirect('../dashboard.php');

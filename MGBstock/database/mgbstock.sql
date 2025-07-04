@@ -24,6 +24,9 @@ CREATE TABLE empresas (
     telefono VARCHAR(20),
     email VARCHAR(100),
     ruc VARCHAR(20),
+    moneda_simbolo VARCHAR(5) DEFAULT '$',
+    moneda_codigo VARCHAR(3) DEFAULT 'MXN',
+    moneda_nombre VARCHAR(50) DEFAULT 'Peso Mexicano',
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     activo TINYINT(1) DEFAULT 1
 );
@@ -121,9 +124,9 @@ INSERT INTO administradores (usuario, password, nombre, email)
 VALUES ('admin', MD5('admin123'), 'Administrador Principal', 'admin@mgbstock.com');
 
 -- Insertar datos de ejemplo
-INSERT INTO empresas (nombre, direccion, telefono, email, ruc) VALUES
-('TechnoSoft S.A.', 'Av. Principal 123, Lima', '01-2345678', 'info@technosoft.com', '20123456789'),
-('Comercial El Dorado', 'Jr. Los Olivos 456, Arequipa', '054-987654', 'ventas@eldorado.com', '20987654321');
+INSERT INTO empresas (nombre, direccion, telefono, email, ruc, moneda_simbolo, moneda_codigo, moneda_nombre) VALUES
+('Comercial El Dorado', 'Av. Revolución 456, Ciudad de México', '55-987654', 'ventas@eldorado.com', 'ELD870614987', '$', 'MXN', 'Peso Mexicano'),
+('TechnoSoft S.A.', 'Av. Principal 123, Lima', '01-2345678', 'info@technosoft.com', '20123456789', 'S/', 'PEN', 'Sol Peruano');
 
 INSERT INTO categorias (empresa_id, nombre, descripcion) VALUES
 (1, 'Software', 'Productos de software y licencias'),
@@ -184,3 +187,9 @@ BEGIN
 END//
 
 DELIMITER ;
+
+-- Script para actualizar base de datos existente (ejecutar solo si la BD ya está creada)
+-- ALTER TABLE empresas ADD COLUMN moneda_simbolo VARCHAR(5) DEFAULT 'S/' AFTER ruc;
+-- ALTER TABLE empresas ADD COLUMN moneda_codigo VARCHAR(3) DEFAULT 'PEN' AFTER moneda_simbolo;
+-- ALTER TABLE empresas ADD COLUMN moneda_nombre VARCHAR(50) DEFAULT 'Sol Peruano' AFTER moneda_codigo;
+-- UPDATE empresas SET moneda_simbolo = '$', moneda_codigo = 'MXN', moneda_nombre = 'Peso Mexicano' WHERE id = 2;

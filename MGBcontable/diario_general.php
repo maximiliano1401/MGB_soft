@@ -345,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['final_submit']) && is
                     totalPatrimonio += saldo;
                 }
 
-                const eliminar = <a href="?balance_id=<?= $balance_id ?>&eliminar=1&cuenta=${c.codigo}" onclick="return confirm('¿Eliminar esta cuenta?')" class="remove-btn">🗑</a>;
+                const eliminar = `<a href="?balance_id=<?= $balance_id ?>&eliminar=1&cuenta=${c.codigo}" onclick="return confirm('¿Eliminar esta cuenta?')" class="remove-btn">🗑</a>`;
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
  <td>${c.codigo}</td>

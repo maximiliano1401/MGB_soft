@@ -4,6 +4,181 @@
   <meta charset="UTF-8">
   <title>Recursos Humanos | MGB Software</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    :root {
+      --primary: #005baa;
+      --primary-dark: #003f7d;
+      --accent: #00bcd4;
+      --bg: #f4f8fb;
+      --card-bg: #fff;
+      --shadow: 0 4px 16px rgba(0,0,0,0.08);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: #222;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary) 70%, var(--accent) 100%);
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-container img {
+      height: 100px;
+      border-radius: 20px;
+      background: #fff;
+      padding: 5px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contabilidad-banner {
+      width: 100%;
+      border-radius: 16px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 18px rgba(0,91,170,0.10);
+      border: 2px solid var(--accent);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    .beneficios-rh {
+      background: #e0f7fa;
+      border-left: 5px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+    }
+
+    .cta-rh {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .cta-rh:hover {
+      background: var(--accent);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+
+    .info-card h4 {
+      margin: 0 0 0.5rem;
+      color: var(--primary);
+    }
+
+    .faq {
+      margin-top: 3rem;
+    }
+
+    .faq h3 {
+      color: var(--primary);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item h4 {
+      margin: 0;
+      color: var(--primary-dark);
+    }
+
+    .faq-item p {
+      margin: 0.4rem 0 0;
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 1rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -20,17 +195,56 @@
       <a href="estadisticas.html">Estadísticas</a>
     </nav>
   </header>
+
   <main>
-    <h2>Gestión de Recursos Humanos</h2>
-    <p>Administra tu equipo de trabajo de forma eficiente con herramientas de control de asistencia, nómina y evaluaciones.</p>
+    <h2>Gestión Integral de Recursos Humanos</h2>
+    <p>
+      Mejora la administración de tu personal con nuestro sistema de Recursos Humanos. Centraliza la información de tus empleados, automatiza procesos y toma decisiones más inteligentes.
+    </p>
     <ul>
-      <li>Control de asistencia y puntualidad</li>
-      <li>Gestión de nómina y prestaciones</li>
-      <li>Evaluaciones de desempeño</li>
-      <li>Portal de empleados y autoservicio</li>
+      <li>Control de asistencia y puntualidad con geolocalización</li>
+      <li>Gestión completa de nómina, incidencias y vacaciones</li>
+      <li>Evaluaciones de desempeño y clima laboral</li>
+      <li>Portal de empleados para autoservicio de recibos y solicitudes</li>
+      <li>Expediente digital con historial de cada colaborador</li>
     </ul>
-    <a href="servicios.html">Volver a Servicios</a>
+
+    <img src="IMG/rh.png" alt="Software de Inventario" class="contabilidad-banner">
+
+    <div class="beneficios-rh">
+      <h3>¿Por qué usar nuestro software de Recursos Humanos?</h3>
+      <ul>
+        <li>Ahorra tiempo y reduce errores en procesos repetitivos</li>
+        <li>Fácil seguimiento a permisos, incapacidades y rotación</li>
+        <li>Automatización de cálculos de nómina y reportes IMSS/SAT</li>
+        <li>Gestión de reclutamiento y evaluaciones en línea</li>
+        <li>Cumple con normativas laborales y de seguridad</li>
+      </ul>
+    </div>
+
+    <img src="IMG/images.png" alt="Dashboard Inventario" class="contabilidad-banner" style="max-width:500px; display:block; margin:auto;">
+
+    <p><strong>¿Listo para transformar tu gestión de personal?</strong></p>
+    <a href="MGBstock/index.php" class="cta-rh">Ir al sistema RH</a>
+    <a href="servicios.html" class="cta-rh" style="background: var(--accent); margin-left: 1rem;">Volver a Servicios</a>
+
+    <div class="faq">
+      <h3>Preguntas frecuentes</h3>
+      <div class="faq-item">
+        <h4>¿Puedo manejar sucursales o áreas diferentes?</h4>
+        <p>Sí, el sistema permite dividir por áreas, departamentos y ubicaciones.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Es compatible con el cálculo de nómina en México?</h4>
+        <p>Claro, está diseñado para cumplir con las leyes fiscales y laborales mexicanas.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Incluye un módulo para vacaciones y permisos?</h4>
+        <p>Sí, puedes gestionar solicitudes, aprobaciones y acumulaciones de forma automática.</p>
+      </div>
+    </div>
   </main>
+
   <footer>
     <p>&copy; 2025 MGB Software S.A. de C.V. - Todos los derechos reservados</p>
   </footer>

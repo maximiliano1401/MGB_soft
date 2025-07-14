@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes - MGB Stock</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .faq-item {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      background: #005baa;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: #004494;
+    }
+    
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .faq-answer.active {
+      display: block;
+    }
+    
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    
+    .faq-icon.rotate {
+      transform: rotate(180deg);
+    }
+    
+    .category-section {
+      margin-bottom: 2rem;
+    }
+    
+    .category-title {
+      color: #005baa;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      color: white;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    
+    .footer-section h3 {
+      color: #00bcd4;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-section ul li a {
+      color: #e1f5fe;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section ul li a:hover {
+      color: #00bcd4;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #3f51b5;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: #e1f5fe;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover {
+      color: #00bcd4;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="../IMG/inventario.jpg" alt="Logo MGB Stock">
+    </div>
+    <h1>Preguntas Frecuentes - MGB Stock</h1>
+    <p>Encuentra respuestas a las dudas más comunes sobre nuestro sistema de inventarios</p>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="../servicios.html">Servicios</a>
+      <a href="index.php">Acceder al Sistema</a>
+      <a href="../contacto.php">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Centro de Ayuda - MGB Stock</h2>
+      <p>Aquí encontrarás respuestas a las preguntas más frecuentes sobre nuestro sistema de gestión de inventarios. Si no encuentras la respuesta que buscas, no dudes en <a href="../contacto.php">contactarnos</a>.</p>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">📦 Gestión de Inventarios</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo registro un nuevo producto en el inventario?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Registrar productos en MGB Stock es súper sencillo. Sigue estos pasos:</p>
+          <ul>
+            <li>Accede al módulo "Productos" desde el menú principal</li>
+            <li>Haz clic en el botón "Agregar Producto" (botón verde)</li>
+            <li>Completa la información básica: nombre, código, descripción</li>
+            <li>Establece precios de compra y venta</li>
+            <li>Configura stock mínimo y máximo para alertas automáticas</li>
+            <li>Asigna categoría y proveedor principal</li>
+            <li>¡Listo! Tu producto estará disponible inmediatamente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo importar productos masivamente desde Excel?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Por supuesto! La importación masiva te ahorra muchísimo tiempo:</p>
+          <ul>
+            <li>Descarga la plantilla oficial de Excel desde el sistema</li>
+            <li>Completa todos los datos de tus productos en la plantilla</li>
+            <li>Usa el módulo "Importar Productos" en el menú principal</li>
+            <li>Selecciona tu archivo Excel y súbelo al sistema</li>
+            <li>El sistema validará automáticamente todos los datos</li>
+            <li>Revisa cualquier error antes de confirmar la importación</li>
+            <li>¡Todos tus productos se crearán en segundos!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo funcionan las alertas de stock bajo?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Las alertas inteligentes te mantienen siempre informado:</p>
+          <ul>
+            <li>Configura el stock mínimo para cada producto</li>
+            <li>El sistema monitorea constantemente todos los niveles</li>
+            <li>Recibes notificaciones automáticas cuando el stock esté bajo</li>
+            <li>Configura alertas por email, SMS o dentro del sistema</li>
+            <li>El dashboard muestra un resumen de productos críticos</li>
+            <li>Genera reportes automáticos para reordenar productos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo gestionar múltiples almacenes?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Sí! MGB Stock es perfecto para empresas con múltiples ubicaciones:</p>
+          <ul>
+            <li>Crea y gestiona todos los almacenes que necesites</li>
+            <li>Asigna productos específicos a cada almacén</li>
+            <li>Transfiere inventario entre almacenes fácilmente</li>
+            <li>Controla stock independiente por ubicación</li>
+            <li>Reportes separados por almacén</li>
+            <li>Usuarios con permisos específicos por almacén</li>
+            <li>Alertas de stock configurables por ubicación</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo organizo productos por categorías?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>La organización por categorías es muy flexible:</p>
+          <ul>
+            <li>Crea categorías principales y subcategorías</li>
+            <li>Asigna productos a múltiples categorías</li>
+            <li>Configura colores distintivos por categoría</li>
+            <li>Filtra reportes por categoría específica</li>
+            <li>Establece márgenes de ganancia por categoría</li>
+            <li>Analiza ventas por categoría de productos</li>
+            <li>Configuración de descuentos por categoría</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">📊 Entradas y Salidas</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo registro una entrada de mercancía?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Registrar entradas es muy fácil con nuestro sistema:</p>
+          <ul>
+            <li>Ve al módulo "Entradas de Inventario" en el menú</li>
+            <li>Haz clic en "Nueva Entrada" (botón azul)</li>
+            <li>Selecciona el proveedor y la fecha de entrada</li>
+            <li>Agrega los productos uno por uno o en lote</li>
+            <li>Especifica cantidades y costos unitarios</li>
+            <li>Revisa el resumen y confirma la entrada</li>
+            <li>¡El stock se actualiza automáticamente!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo hacer devoluciones de productos?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Claro que sí! El sistema maneja devoluciones completas:</p>
+          <ul>
+            <li>Devoluciones de clientes (incrementa tu stock)</li>
+            <li>Devoluciones a proveedores (reduce tu stock)</li>
+            <li>Registro detallado de motivos de devolución</li>
+            <li>Ajustes automáticos en inventario y costos</li>
+            <li>Reportes completos de todas las devoluciones</li>
+            <li>Trazabilidad completa del historial</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo hago ajustes de inventario?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Los ajustes de inventario son necesarios y muy sencillos:</p>
+          <ul>
+            <li>Accede al módulo "Ajustes de Inventario"</li>
+            <li>Selecciona el producto que necesitas ajustar</li>
+            <li>Ingresa la cantidad real encontrada</li>
+            <li>Especifica el motivo del ajuste (merma, robo, error, etc.)</li>
+            <li>El sistema calculará automáticamente la diferencia</li>
+            <li>Confirma el ajuste y se actualizará el stock</li>
+            <li>Queda registrado en el historial para auditorías</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo rastrear números de serie o lotes?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Sí! MGB Stock incluye trazabilidad completa:</p>
+          <ul>
+            <li>Registro de números de serie únicos</li>
+            <li>Control de lotes con fechas de vencimiento</li>
+            <li>Seguimiento completo desde compra hasta venta</li>
+            <li>Alertas de productos próximos a vencer</li>
+            <li>Reportes de trazabilidad por lote</li>
+            <li>Cumplimiento con normativas sanitarias</li>
+            <li>Ideal para productos farmacéuticos y alimenticios</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">📈 Reportes y Análisis</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué reportes puedo generar?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>MGB Stock incluye más de 15 reportes profesionales:</p>
+          <ul>
+            <li>Reporte de existencias actuales por almacén</li>
+            <li>Movimientos detallados de inventario</li>
+            <li>Productos con stock bajo y crítico</li>
+            <li>Valuación completa de inventario</li>
+            <li>Análisis de productos más vendidos</li>
+            <li>Rotación de inventario por categoría</li>
+            <li>Reportes por proveedor y cliente</li>
+            <li>Análisis de costos y márgenes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo exportar reportes a Excel?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Por supuesto! Exportación en múltiples formatos:</p>
+          <ul>
+            <li>Exportación a Excel (.xlsx) con formato profesional</li>
+            <li>Exportación a PDF para imprimir</li>
+            <li>Exportación a CSV para análisis externos</li>
+            <li>Formatos optimizados para presentaciones</li>
+            <li>Personalización de columnas a exportar</li>
+            <li>Programación de reportes automáticos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo interpretar los reportes de rotación?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Los reportes de rotación te ayudan a optimizar tu inventario:</p>
+          <ul>
+            <li>Identifica productos de alta rotación (se venden rápido)</li>
+            <li>Detecta productos de baja rotación (se mueven lento)</li>
+            <li>Calcula el índice de rotación por producto/categoría</li>
+            <li>Analiza tendencias de venta por períodos</li>
+            <li>Optimiza compras basándote en datos reales</li>
+            <li>Reduce inventario muerto y aumenta liquidez</li>
+            <li>Gráficos visuales fáciles de interpretar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo generar reportes automáticos?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Sí! Los reportes automáticos te ahorran tiempo:</p>
+          <ul>
+            <li>Programa reportes diarios, semanales o mensuales</li>
+            <li>Envío automático por email a quien necesite</li>
+            <li>Configuración de horarios específicos</li>
+            <li>Filtros personalizados para cada reporte</li>
+            <li>Alertas automáticas de stock crítico</li>
+            <li>Resúmenes ejecutivos automatizados</li>
+            <li>Integración con sistemas externos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">🔐 Seguridad y Usuarios</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo gestiono los permisos de usuarios?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>El sistema de permisos es muy flexible y seguro:</p>
+          <ul>
+            <li>Crea roles personalizados (Admin, Operador, Consulta)</li>
+            <li>Asigna permisos específicos por módulo</li>
+            <li>Controla acceso a almacenes específicos</li>
+            <li>Limita acciones (solo consulta, solo entrada, etc.)</li>
+            <li>Auditoría completa de acciones por usuario</li>
+            <li>Sesiones seguras con cierre automático</li>
+            <li>Registro de actividad detallado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué seguridad tienen mis datos?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>La seguridad de tus datos es nuestra prioridad:</p>
+          <ul>
+            <li>Encriptación SSL de 256 bits en todas las comunicaciones</li>
+            <li>Respaldos automáticos diarios cifrados</li>
+            <li>Servidores en centros de datos certificados</li>
+            <li>Monitoreo 24/7 contra amenazas</li>
+            <li>Acceso controlado por autenticación de dos factores</li>
+            <li>Cumplimiento con estándares internacionales</li>
+            <li>Políticas de privacidad estrictas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo hacer respaldos de mi información?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>¡Por supuesto! Respaldos automáticos y manuales:</p>
+          <ul>
+            <li>Respaldos automáticos diarios en la nube</li>
+            <li>Exportación manual de datos cuando lo necesites</li>
+            <li>Múltiples copias de seguridad en diferentes ubicaciones</li>
+            <li>Restauración rápida en caso de problemas</li>
+            <li>Historial de respaldos por 12 meses</li>
+            <li>Descarga de respaldos en formato CSV/Excel</li>
+            <li>Garantía de recuperación de datos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>¿No encontraste tu respuesta?</h2>
+      <p>Si tu pregunta no está en esta lista, estamos aquí para ayudarte:</p>
+      <ul>
+        <li>📧 Email: <a href="mailto:stock@mgbsoftware.com">stock@mgbsoftware.com</a></li>
+        <li>📞 Teléfono: +52 (XXX) XXX-XXXX</li>
+        <li>💬 Chat en vivo: Disponible en horario laboral</li>
+        <li>📝 <a href="../contacto.php">Formulario de contacto</a></li>
+      </ul>
+      
+      <a href="../contacto.php" style="display:inline-block; background:var(--primary); color:#fff; padding:0.8rem 2rem; border-radius:8px; font-weight:600; text-decoration:none; margin-top:1rem;">Contactar Soporte</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MGB Software</h3>
+        <p>Desarrollo de software profesional para empresas modernas</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Nuestros Productos</h3>
+        <ul>
+          <li><a href="../MGBcontable/login.php">MGB Contable</a></li>
+          <li><a href="index.php">MGB Stock</a></li>
+          <li><a href="../MGBrrhh/login.php">MGB RRHH</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Servicios</h3>
+        <ul>
+          <li><a href="../contabilidad.html">Contabilidad</a></li>
+          <li><a href="../inventarios.html">Inventarios</a></li>
+          <li><a href="../recursos_humanos.html">Recursos Humanos</a></li>
+          <li><a href="../servicios.html">Todos los Servicios</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="../acerca_de.html">Acerca de</a></li>
+          <li><a href="../paquetes.html">Paquetes</a></li>
+          <li><a href="../estadisticas.html">Estadísticas</a></li>
+          <li><a href="../politica_privacidad.html">Política de Privacidad</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Sustentabilidad</h3>
+        <ul>
+          <li><a href="../seguridad.html">Seguridad</a></li>
+          <li><a href="../ambiente.html">Medio Ambiente</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="../contacto.php">Contacto</a></li>
+          <li><a href="../faq_contable.html">FAQ Contable</a></li>
+          <li><a href="preguntas_frecuentes.html">FAQ Stock</a></li>
+          <li><a href="../faq_rrhh.html">FAQ RRHH</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 MGB Software S.A. de C.V. - Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="../terminos_condiciones.html">Términos y Condiciones</a>
+        <a href="../politica_privacidad.html">Política de Privacidad</a>
+        <a href="../seguridad.html">Seguridad</a>
+        <a href="../ambiente.html">Medio Ambiente</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('.faq-icon');
+      
+      if (answer.classList.contains('active')) {
+        answer.classList.remove('active');
+        icon.classList.remove('rotate');
+      } else {
+        // Cerrar otras respuestas abiertas
+        document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+          activeAnswer.classList.remove('active');
+        });
+        document.querySelectorAll('.faq-icon.rotate').forEach(activeIcon => {
+          activeIcon.classList.remove('rotate');
+        });
+        
+        // Abrir la respuesta seleccionada
+        answer.classList.add('active');
+        icon.classList.add('rotate');
+      }
+    }
+  </script>
+</body>
+</html>

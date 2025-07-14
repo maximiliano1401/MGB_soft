@@ -54,6 +54,9 @@ $alert = getAlert();
         <div class="login-card">
             <div class="login-header">
                 <h1>MGBStock</h1>
+                    <a href="../index.html" class="back-btn">
+        ← Volver al Inicio
+    </a>
                 <p>Sistema de Inventario</p>
             </div>
             <div class="login-body">

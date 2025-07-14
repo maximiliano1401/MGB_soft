@@ -176,6 +176,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <img src="img/3-removebg-preview.png" alt="Logo"
         style="width: 140px; height: auto; margin-bottom: 18px; display: block;">
         <h2>MGB Contabilidad</h2>
+            <a href="../index.html" class="back-btn">
+        ← Volver al Inicio
+    </a>
     </div>
     <div class="login-form-area">
         <?php if ($mensaje) echo "<div class='mensaje-error'>$mensaje</div>"; ?>

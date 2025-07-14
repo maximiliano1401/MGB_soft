@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative; /* Agregado para el botón absoluto */
         }
         .login-container {
             background: #fff;
@@ -67,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
         .logo-container img {
-            height: 80px;
+            height: 120px; /* Aumentado de 80px a 120px */
             border-radius: 15px;
             margin-bottom: 1.5rem;
         }
@@ -139,6 +140,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .register-link a:hover {
             text-decoration: underline;
         }
+        /* Nuevo estilo para el botón de regreso */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #005baa;
+            border: 2px solid #005baa;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-btn:hover {
+            background: #005baa;
+            color: white;
+            transform: translateY(-2px);
+        }
         @media (max-width: 500px) {
             .login-container {
                 margin: 1rem;
@@ -148,9 +172,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+    <!-- Botón de regreso al index -->
+    <a href="../index.html" class="back-btn">
+        ← Volver al Inicio
+    </a>
+    
     <div class="login-container">
         <div class="logo-container">
-            <img src="IMG/logo.png" alt="Logo MGB">
+            <img src="IMG/4-removebg-preview.png" alt="Logo MGB">
         </div>
         <h1>Iniciar Sesión</h1>
         <p class="subtitle">Sistema de Recursos Humanos</p>

@@ -124,7 +124,7 @@ while ($row = $result->fetch_assoc()) {
 <body>
     <header>
         <div class="logo-container">
-            <img src="IMG/logo.png" alt="Logo MGB">
+            <img src="IMG/4-removebg-preview.png" alt="Logo MGB - Recursos Humanos">
         </div>
         <h1>Registrar Empleado</h1>
         <nav>

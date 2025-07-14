@@ -116,7 +116,7 @@ $result = $conn->query($sql);
 <body>
     <header>
         <div class="logo-container">
-            <img src="../IMG/logo.png" alt="Logo MGB">
+            <img src="../IMG/recursos.jpeg" alt="Logo MGB - Recursos Humanos">
         </div>
         <h1>Gestión de Empleados</h1>
         <nav>

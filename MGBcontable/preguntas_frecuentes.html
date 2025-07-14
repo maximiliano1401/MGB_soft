@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Preguntas Frecuentes - MGB Contable</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .faq-item {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      background: #005baa;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: #004494;
+    }
+    
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .faq-answer.active {
+      display: block;
+    }
+    
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    
+    .faq-icon.rotate {
+      transform: rotate(180deg);
+    }
+    
+    .category-section {
+      margin-bottom: 2rem;
+    }
+    
+    .category-title {
+      color: #005baa;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="IMG/contabilidad.jpg" alt="Logo MGB Contable">
+    </div>
+    <h1>Preguntas Frecuentes - MGB Contable</h1>
+    <p>Encuentra respuestas a las dudas más comunes sobre nuestro sistema contable</p>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="MGBcontable/login.php">Acceder al Sistema</a>
+      <a href="contacto.php">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Centro de Ayuda - MGB Contable</h2>
+      <p>Aquí encontrarás respuestas a las preguntas más frecuentes sobre nuestro sistema de contabilidad. Si no encuentras la respuesta que buscas, no dudes en <a href="contacto.php">contactarnos</a>.</p>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">🔐 Acceso y Seguridad</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo puedo acceder al sistema MGB Contable?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Para acceder al sistema MGB Contable:</p>
+          <ul>
+            <li>Ingresa a nuestro sitio web y haz clic en "MGB Contable"</li>
+            <li>Introduce tu usuario y contraseña proporcionados por tu empresa</li>
+            <li>Si es tu primer acceso, contacta al administrador para obtener tus credenciales</li>
+            <li>El sistema está disponible 24/7 desde cualquier navegador web</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué hago si olvido mi contraseña?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Si olvidas tu contraseña:</p>
+          <ul>
+            <li>Contacta al administrador del sistema en tu empresa</li>
+            <li>Proporciona tu nombre de usuario</li>
+            <li>El administrador podrá restablecer tu contraseña</li>
+            <li>Por seguridad, no podemos restablecer contraseñas directamente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Es seguro ingresar datos contables en el sistema?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, MGB Contable es completamente seguro:</p>
+          <ul>
+            <li>Utilizamos encriptación SSL de 256 bits para todas las comunicaciones</li>
+            <li>Los datos se almacenan en servidores seguros con respaldos automáticos</li>
+            <li>Cumplimos con estándares internacionales de seguridad</li>
+            <li>Solo usuarios autorizados pueden acceder a la información</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">📊 Funcionalidades Contables</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué tipos de reportes puedo generar?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>MGB Contable genera múltiples reportes:</p>
+          <ul>
+            <li>Estados financieros (Balance General, Estado de Resultados)</li>
+            <li>Flujo de efectivo</li>
+            <li>Reportes fiscales (DIOT, XML, etc.)</li>
+            <li>Auxiliares contables</li>
+            <li>Balanza de comprobación</li>
+            <li>Reportes personalizados por período</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo importar datos desde Excel?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, puedes importar datos fácilmente:</p>
+          <ul>
+            <li>Catálogo de cuentas desde Excel</li>
+            <li>Pólizas contables masivas</li>
+            <li>Datos de clientes y proveedores</li>
+            <li>Utilizamos plantillas predefinidas para facilitar la importación</li>
+            <li>El sistema valida automáticamente los datos importados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿El sistema maneja facturación electrónica?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, MGB Contable incluye facturación electrónica completa:</p>
+          <ul>
+            <li>Generación de CFDI 4.0 válidos ante SAT</li>
+            <li>Timbrado automático</li>
+            <li>Envío automático por email</li>
+            <li>Cancelación de facturas</li>
+            <li>Reportes de facturación</li>
+            <li>Integración automática con la contabilidad</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">⚙️ Configuración y Personalización</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo personalizar el catálogo de cuentas?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Por supuesto, el catálogo es totalmente personalizable:</p>
+          <ul>
+            <li>Agregar, modificar o eliminar cuentas contables</li>
+            <li>Configurar subcuentas y auxiliares</li>
+            <li>Asignar códigos según tus necesidades</li>
+            <li>Definir tipos de cuenta (activo, pasivo, ingresos, etc.)</li>
+            <li>Importar catálogos desde otros sistemas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cuántos usuarios pueden trabajar simultáneamente?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>El número de usuarios depende del plan contratado:</p>
+          <ul>
+            <li>Plan Básico: Hasta 3 usuarios simultáneos</li>
+            <li>Plan Profesional: Hasta 10 usuarios simultáneos</li>
+            <li>Plan Empresarial: Usuarios ilimitados</li>
+            <li>Cada usuario puede tener permisos específicos</li>
+            <li>Control total sobre las funciones de cada usuario</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">🔧 Soporte Técnico</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué tipo de soporte técnico incluye?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Incluimos soporte técnico completo:</p>
+          <ul>
+            <li>Soporte por teléfono y email</li>
+            <li>Capacitación inicial para usuarios</li>
+            <li>Manuales de usuario detallados</li>
+            <li>Actualizaciones automáticas del sistema</li>
+            <li>Respaldo técnico para problemas urgentes</li>
+            <li>Asesoría contable básica</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Con qué frecuencia se actualiza el sistema?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Las actualizaciones son continuas:</p>
+          <ul>
+            <li>Actualizaciones automáticas mensuales</li>
+            <li>Actualizaciones fiscales inmediatas cuando cambian las leyes</li>
+            <li>Mejoras de funcionalidad basadas en feedback de usuarios</li>
+            <li>Parches de seguridad cuando son necesarios</li>
+            <li>Sin costo adicional para todas las actualizaciones</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>¿No encontraste tu respuesta?</h2>
+      <p>Si tu pregunta no está en esta lista, estamos aquí para ayudarte:</p>
+      <ul>
+        <li>📧 Email: <a href="mailto:soporte@mgbsoftware.com">soporte@mgbsoftware.com</a></li>
+        <li>📞 Teléfono: +52 (XXX) XXX-XXXX</li>
+        <li>💬 Chat en vivo: Disponible en horario laboral</li>
+        <li>📝 <a href="contacto.php">Formulario de contacto</a></li>
+      </ul>
+      
+      <a href="contacto.php" style="display:inline-block; background:var(--primary); color:#fff; padding:0.8rem 2rem; border-radius:8px; font-weight:600; text-decoration:none; margin-top:1rem;">Contactar Soporte</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MGB Contable</h3>
+        <p>Sistema contable profesional</p>
+        <p>📧 contable@mgbsoftware.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MGB Software S.A. de C.V. - Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="index.html">Volver al Inicio</a>
+        <a href="MGBcontable/login.php">Acceder al Sistema</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('.faq-icon');
+      
+      if (answer.classList.contains('active')) {
+        answer.classList.remove('active');
+        icon.classList.remove('rotate');
+      } else {
+        // Cerrar otras respuestas abiertas
+        document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+          activeAnswer.classList.remove('active');
+        });
+        document.querySelectorAll('.faq-icon.rotate').forEach(activeIcon => {
+          activeIcon.classList.remove('rotate');
+        });
+        
+        // Abrir la respuesta seleccionada
+        answer.classList.add('active');
+        icon.classList.add('rotate');
+      }
+    }
+  </script>
+</body>
+</html>

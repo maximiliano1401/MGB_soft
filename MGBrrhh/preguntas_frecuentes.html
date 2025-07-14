@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes - MGB RRHH</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .faq-item {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      background: #005baa;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: #004494;
+    }
+    
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .faq-answer.active {
+      display: block;
+    }
+    
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    
+    .faq-icon.rotate {
+      transform: rotate(180deg);
+    }
+    
+    .category-section {
+      margin-bottom: 2rem;
+    }
+    
+    .category-title {
+      color: #005baa;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+      color: white;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    
+    .footer-section h3 {
+      color: #00bcd4;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-section ul li a {
+      color: #e1f5fe;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section ul li a:hover {
+      color: #00bcd4;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #3f51b5;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: #e1f5fe;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover {
+      color: #00bcd4;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="../IMG/recursos.jpeg" alt="Logo MGB RRHH">
+    </div>
+    <h1>Preguntas Frecuentes - MGB RRHH</h1>
+    <p>Encuentra respuestas a las dudas más comunes sobre nuestro sistema de recursos humanos</p>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="../servicios.html">Servicios</a>
+      <a href="login.php">Acceder al Sistema</a>
+      <a href="../contacto.php">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Centro de Ayuda - MGB RRHH</h2>
+      <p>Aquí encontrarás respuestas a las preguntas más frecuentes sobre nuestro sistema de recursos humanos. Si no encuentras la respuesta que buscas, no dudes en <a href="../contacto.php">contactarnos</a>.</p>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">👥 Gestión de Empleados</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo registro un nuevo empleado?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Para registrar un nuevo empleado:</p>
+          <ul>
+            <li>Accede al módulo "Empleados" en el menú principal</li>
+            <li>Haz clic en "Registrar Empleado"</li>
+            <li>Completa los datos personales básicos</li>
+            <li>Asigna departamento y puesto</li>
+            <li>Configura salario y beneficios</li>
+            <li>Sube documentos requeridos</li>
+            <li>Guarda para crear el expediente digital</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo importar empleados desde Excel?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, puedes importar empleados masivamente:</p>
+          <ul>
+            <li>Descarga la plantilla de Excel desde el sistema</li>
+            <li>Completa los datos de tus empleados</li>
+            <li>Usa el módulo "Importar Empleados"</li>
+            <li>El sistema validará automáticamente los datos</li>
+            <li>Podrás revisar errores antes de confirmar</li>
+            <li>Se crean automáticamente los expedientes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo manejo las altas y bajas de empleados?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Las altas y bajas son procesos automatizados:</p>
+          <ul>
+            <li>Módulo específico para "Altas y Bajas"</li>
+            <li>Registro de fecha de ingreso y motivo</li>
+            <li>Para bajas: fecha de salida y motivo</li>
+            <li>Cálculo automático de finiquitos</li>
+            <li>Generación de documentos oficiales</li>
+            <li>Archivo del expediente sin perder historial</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">💰 Nómina y Pagos</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo proceso la nómina?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>El procesamiento de nómina es automatizado:</p>
+          <ul>
+            <li>Selecciona el período de nómina</li>
+            <li>El sistema calcula automáticamente salarios</li>
+            <li>Aplica deducciones (IMSS, INFONAVIT, etc.)</li>
+            <li>Incluye horas extras y bonos</li>
+            <li>Genera recibos de nómina</li>
+            <li>Crea archivos para bancos</li>
+            <li>Reportes fiscales automáticos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿El sistema calcula automáticamente las deducciones?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, todas las deducciones se calculan automáticamente:</p>
+          <ul>
+            <li>IMSS (cuotas obrero-patronales)</li>
+            <li>INFONAVIT (descuentos de crédito)</li>
+            <li>ISR (impuesto sobre la renta)</li>
+            <li>Fondo de retiro</li>
+            <li>Deducciones personalizadas</li>
+            <li>Actualizaciones automáticas de tarifas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo personalizar los recibos de nómina?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, los recibos son completamente personalizables:</p>
+          <ul>
+            <li>Logo y datos de la empresa</li>
+            <li>Campos adicionales personalizados</li>
+            <li>Formato según tus necesidades</li>
+            <li>Colores y diseño corporativo</li>
+            <li>Envío automático por email</li>
+            <li>Versión PDF para impresión</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">🕒 Control de Asistencia</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo registro la asistencia de los empleados?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Existen múltiples formas de registrar asistencia:</p>
+          <ul>
+            <li>Registro manual desde el sistema</li>
+            <li>Importación desde relojes checadores</li>
+            <li>Aplicación móvil para empleados</li>
+            <li>Integración con sistemas biométricos</li>
+            <li>Registro web desde cualquier dispositivo</li>
+            <li>Códigos QR para check-in rápido</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo manejo las ausencias y permisos?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>El sistema incluye gestión completa de ausencias:</p>
+          <ul>
+            <li>Registro de diferentes tipos de ausencias</li>
+            <li>Solicitud de permisos por empleados</li>
+            <li>Flujo de aprobación automático</li>
+            <li>Descuentos automáticos en nómina</li>
+            <li>Calendario de ausencias</li>
+            <li>Reportes de ausentismo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo calculo las horas extras?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Las horas extras se calculan automáticamente:</p>
+          <ul>
+            <li>Configuración de horarios laborales</li>
+            <li>Detección automática de horas extras</li>
+            <li>Diferentes tarifas (simples, dobles, triples)</li>
+            <li>Cálculo según la legislación laboral</li>
+            <li>Integración directa con nómina</li>
+            <li>Reportes detallados de horas extras</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">🏖️ Vacaciones y Beneficios</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Cómo administro las vacaciones?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>La gestión de vacaciones es completamente automatizada:</p>
+          <ul>
+            <li>Cálculo automático de días ganados</li>
+            <li>Calendario de vacaciones disponibles</li>
+            <li>Solicitud de vacaciones por empleados</li>
+            <li>Aprobación por supervisores</li>
+            <li>Bloqueo de fechas no disponibles</li>
+            <li>Pago automático de prima vacacional</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Puedo configurar diferentes tipos de empleados?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, el sistema es muy flexible:</p>
+          <ul>
+            <li>Empleados de tiempo completo</li>
+            <li>Empleados de medio tiempo</li>
+            <li>Empleados por horas</li>
+            <li>Contratistas y freelancers</li>
+            <li>Diferentes esquemas de pago</li>
+            <li>Beneficios personalizados por tipo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card category-section">
+      <h2 class="category-title">📊 Reportes y Análisis</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Qué reportes puedo generar?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>MGB RRHH incluye reportes completos:</p>
+          <ul>
+            <li>Reportes de nómina detallados</li>
+            <li>Listado de empleados activos/inactivos</li>
+            <li>Reporte de asistencia y puntualidad</li>
+            <li>Análisis de ausentismo</li>
+            <li>Reportes fiscales (IMSS, INFONAVIT)</li>
+            <li>Cumpleaños y aniversarios</li>
+            <li>Estadísticas de rotación de personal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>¿Los reportes cumplen con los requerimientos fiscales?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí, todos los reportes cumplen con la normativa:</p>
+          <ul>
+            <li>Reportes SUA del IMSS</li>
+            <li>Archivo IDSE para el IMSS</li>
+            <li>Reportes de INFONAVIT</li>
+            <li>Declaraciones anuales</li>
+            <li>Comprobantes fiscales digitales</li>
+            <li>Actualizaciones automáticas de formatos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>¿No encontraste tu respuesta?</h2>
+      <p>Si tu pregunta no está en esta lista, estamos aquí para ayudarte:</p>
+      <ul>
+        <li>📧 Email: <a href="mailto:rrhh@mgbsoftware.com">rrhh@mgbsoftware.com</a></li>
+        <li>📞 Teléfono: +52 (XXX) XXX-XXXX</li>
+        <li>💬 Chat en vivo: Disponible en horario laboral</li>
+        <li>📝 <a href="../contacto.php">Formulario de contacto</a></li>
+      </ul>
+      
+      <a href="../contacto.php" style="display:inline-block; background:var(--primary); color:#fff; padding:0.8rem 2rem; border-radius:8px; font-weight:600; text-decoration:none; margin-top:1rem;">Contactar Soporte</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MGB Software</h3>
+        <p>Desarrollo de software profesional para empresas modernas</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Nuestros Productos</h3>
+        <ul>
+          <li><a href="../MGBcontable/login.php">MGB Contable</a></li>
+          <li><a href="../MGBstock/index.php">MGB Stock</a></li>
+          <li><a href="login.php">MGB RRHH</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Servicios</h3>
+        <ul>
+          <li><a href="../contabilidad.html">Contabilidad</a></li>
+          <li><a href="../inventarios.html">Inventarios</a></li>
+          <li><a href="../recursos_humanos.html">Recursos Humanos</a></li>
+          <li><a href="../servicios.html">Todos los Servicios</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="../acerca_de.html">Acerca de</a></li>
+          <li><a href="../paquetes.html">Paquetes</a></li>
+          <li><a href="../estadisticas.html">Estadísticas</a></li>
+          <li><a href="../politica_privacidad.html">Política de Privacidad</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Sustentabilidad</h3>
+        <ul>
+          <li><a href="../seguridad.html">Seguridad</a></li>
+          <li><a href="../ambiente.html">Medio Ambiente</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Soporte</h3>
+        <ul>
+          <li><a href="../contacto.php">Contacto</a></li>
+          <li><a href="../faq_contable.html">FAQ Contable</a></li>
+          <li><a href="../faq_stock.html">FAQ Stock</a></li>
+          <li><a href="preguntas_frecuentes.html">FAQ RRHH</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 MGB Software S.A. de C.V. - Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="../terminos_condiciones.html">Términos y Condiciones</a>
+        <a href="../politica_privacidad.html">Política de Privacidad</a>
+        <a href="../seguridad.html">Seguridad</a>
+        <a href="../ambiente.html">Medio Ambiente</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFAQ(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('.faq-icon');
+      
+      if (answer.classList.contains('active')) {
+        answer.classList.remove('active');
+        icon.classList.remove('rotate');
+      } else {
+        // Cerrar otras respuestas abiertas
+        document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+          activeAnswer.classList.remove('active');
+        });
+        document.querySelectorAll('.faq-icon.rotate').forEach(activeIcon => {
+          activeIcon.classList.remove('rotate');
+        });
+        
+        // Abrir la respuesta seleccionada
+        answer.classList.add('active');
+        icon.classList.add('rotate');
+      }
+    }
+  </script>
+</body>
+</html>

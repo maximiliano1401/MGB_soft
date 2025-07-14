@@ -191,7 +191,7 @@ $stats['ausencias_mes'] = $result->fetch_assoc()['total'];
     <header>
         <div class="header-content">
             <div class="logo-section">
-                <img src="IMG/logo.png" alt="Logo MGB">
+                <img src="IMG/4-removebg-preview.png" alt="Logo MGB - Recursos Humanos">
                 <h1>Sistema de Recursos Humanos</h1>
             </div>
             <div class="user-section">

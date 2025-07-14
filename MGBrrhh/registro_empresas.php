@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="logo-container">
-            <img src="IMG/logo.png" alt="Logo MGB">
+            <img src="IMG/4.png" alt="Logo MGB - Recursos Humanos">
         </div>
         <h1>Registrar Empresa</h1>
         <nav>

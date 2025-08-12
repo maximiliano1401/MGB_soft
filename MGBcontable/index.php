@@ -64,12 +64,12 @@ if (!isset($_SESSION['usuario_id'])) {
                 </button>
 
                 <button onclick="window.location.href='estadisticas_ok.php'" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                    📊 Estadísticas 3D
+                    📊 Estadísticas
                 </button>
 
-                <button onclick="window.location.href='demo_estadisticas_3d.php'" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white;">
+                <!-- <button onclick="window.location.href='demo_estadisticas_3d.php'" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white;">
                     🚀 Demo Estadísticas 3D
-                </button>
+                </button> -->
 
                 <?php if (isset($_SESSION['usuario_rol']) && $_SESSION['usuario_rol'] == 'admin'): ?>
                     <button onclick="window.location.href='usuarios.php'">

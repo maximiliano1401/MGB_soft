@@ -265,16 +265,16 @@ plt.close(fig)
                 // Mostrar gráfico 3D
                 const graficoHtml = `
                     <div class="chart-area">
-                        <h3>📊 Gráfico de Saldos por Empresa</h3>
+                        <h3>📊 Gráfico 3D de Saldos por Empresa</h3>
                         <img src="data:image/png;base64,${chartBase64}" style="max-width: 100%; height: auto;">
                         <p style="text-align: center; margin-top: 15px; color: #666;">
-                            Gráfico generado con ${datosEmpresa.empresas.length} empresas
+                            Gráfico 3D generado con ${datosEmpresa.empresas.length} empresas
                         </p>
                     </div>
                 `;
                 
                 document.getElementById('grafico-area').innerHTML = graficoHtml;
-                mostrarMensaje('Gráfico generado exitosamente', 'success');
+                mostrarMensaje('Gráfico 3D generado exitosamente', 'success');
                 
             } catch (error) {
                 mostrarMensaje('Error generando gráfico: ' + error.message, 'error');
